@@ -1,0 +1,237 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Montserrat:wght@400;500;600;700;800;900&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-black text-white;
+    font-family: "Inter", "Montserrat", system-ui, -apple-system, sans-serif;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer utilities {
+  .perspective-1000 {
+    perspective: 1000px;
+  }
+}
+
+/* Cyber Loading Screen Styles */
+.loader-container {
+  background: #000;
+}
+.loader-inner {
+  width: 360px;
+}
+.scanner {
+  width: 120px;
+  height: 120px;
+  position: relative;
+}
+.scanner-ring {
+  position: absolute;
+  inset: 0;
+  border-radius: 9999px;
+  border: 2px solid rgba(220, 38, 38, 0.25);
+  box-shadow: 0 0 30px rgba(220, 38, 38, 0.08);
+  animation: ring-rotate 10s linear infinite;
+}
+.scanner-core {
+  position: absolute;
+  inset: 18px;
+  border-radius: 9999px;
+  background: radial-gradient(
+    circle at 30% 30%,
+    rgba(220, 38, 38, 0.12),
+    transparent 40%
+  );
+  box-shadow: 0 0 50px rgba(220, 38, 38, 0.04);
+  mix-blend-mode: screen;
+}
+
+@keyframes ring-rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.progress-bar {
+  width: 280px;
+  height: 8px;
+  position: relative;
+}
+.progress-track {
+  position: absolute;
+  inset: 0;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.03);
+}
+.progress-fill {
+  position: absolute;
+  height: 100%;
+  border-radius: 9999px;
+  background: linear-gradient(
+    90deg,
+    rgba(220, 38, 38, 0.95),
+    rgba(180, 18, 18, 0.95)
+  );
+  transition: width 0.2s linear;
+}
+
+/* Glitch effect (lightweight) */
+.glitch-wrap {
+  font-family: "Montserrat", sans-serif;
+}
+.glitch {
+  color: #fff;
+  font-weight: 700;
+  letter-spacing: 2px;
+  position: relative;
+  display: inline-block;
+  font-size: 14px;
+}
+.glitch.small {
+  font-size: 12px;
+  margin-top: 6px;
+  display: block;
+}
+
+/* Mobile adjustments for loader */
+@media (max-width: 640px) {
+  .scanner {
+    width: 96px;
+    height: 96px;
+  }
+  .scanner-core {
+    inset: 12px;
+  }
+  .progress-bar {
+    width: 220px;
+  }
+  .glitch {
+    font-size: 12px;
+  }
+  .glitch.small {
+    font-size: 10px;
+  }
+}
+
+.glitch::before,
+.glitch::after {
+  content: attr(data-text);
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  overflow: hidden;
+  clip: rect(0, 9999px, 0, 0);
+}
+.glitch::before {
+  animation: glitchTop 2.5s infinite linear;
+  color: rgba(220, 38, 38, 0.9);
+  z-index: -1;
+}
+.glitch::after {
+  animation: glitchBottom 3s infinite linear;
+  color: rgba(255, 80, 80, 0.75);
+  z-index: -2;
+}
+@keyframes glitchTop {
+  0% {
+    clip: rect(0, 9999px, 0, 0);
+    transform: translate(0, 0);
+  }
+  10% {
+    clip: rect(6px, 9999px, 34px, 0);
+    transform: translate(-2px, -2px);
+  }
+  20% {
+    clip: rect(0, 9999px, 8px, 0);
+    transform: translate(1px, 1px);
+  }
+  30% {
+    clip: rect(12px, 9999px, 36px, 0);
+    transform: translate(-1px, 0);
+  }
+  100% {
+    clip: rect(0, 9999px, 0, 0);
+    transform: translate(0, 0);
+  }
+}
+@keyframes glitchBottom {
+  0% {
+    clip: rect(0, 9999px, 0, 0);
+    transform: translate(0, 0);
+  }
+  15% {
+    clip: rect(10px, 9999px, 40px, 0);
+    transform: translate(2px, 2px);
+  }
+  50% {
+    clip: rect(0, 9999px, 8px, 0);
+    transform: translate(-1px, -1px);
+  }
+  100% {
+    clip: rect(0, 9999px, 0, 0);
+    transform: translate(0, 0);
+  }
+}
+
+/* Scanline overlay */
+.scanlines {
+  background-image: repeating-linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.02) 0px,
+    rgba(255, 255, 255, 0.02) 1px,
+    transparent 1px,
+    transparent 6px
+  );
+  background-size: 100% 8px;
+  animation: scan 6s linear infinite;
+  opacity: 0.04;
+}
+@keyframes scan {
+  from {
+    background-position-y: 0;
+  }
+  to {
+    background-position-y: 64px;
+  }
+}
+
+/* Skill name glow */
+.skill-name {
+  text-shadow: 0 0 8px rgba(220, 38, 38, 0.85);
+  letter-spacing: 0.6px;
+}
+
+/* Mobile tweaks for loader already present */
+@media (max-width: 640px) {
+  .scanner {
+    width: 96px;
+    height: 96px;
+  }
+  .scanner-core {
+    inset: 12px;
+  }
+  .progress-bar {
+    width: 220px;
+  }
+  .glitch {
+    font-size: 12px;
+  }
+  .glitch.small {
+    font-size: 10px;
+  }
+  .scanlines {
+    opacity: 0.03;
+  }
+}
