@@ -66,7 +66,7 @@ const Projects = () => {
                 Live Demo
               </motion.a>
               <motion.a
-                href="#"
+                href="https://github.com/alsanroj/Alsan-Portfolio"
                 target="_blank"
                 rel="noopener noreferrer"
                 whileHover={{ scale: 1.05 }}
