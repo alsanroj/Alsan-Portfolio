@@ -122,7 +122,7 @@ const Footer = () => {
             {socials.map((social, i) => (
               <a 
                 key={i} 
-                href={`${social.toLowerCase()}`}
+                href={`${social.href}`}
                 className={`p-3 md:p-4 rounded-full bg-gray-900/40 backdrop-blur-xl border border-gray-800 transition-all duration-500 hover:scale-[1.15] hover:-translate-y-2 ${social.borderHover} ${social.shadowHover} group animate-float-reverse`}
                 style={{ animationDelay: social.delay }}
               >
