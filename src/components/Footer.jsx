@@ -17,9 +17,30 @@ const LinkedinIcon = ({ className }) => (
 
 const Footer = () => {
   const socials = [
-    { icon: <GithubIcon className="w-5 h-5" />, borderHover: 'hover:border-cyan-400', textHover: 'group-hover:text-cyan-400', shadowHover: 'hover:shadow-[0_0_20px_rgba(34,211,238,0.4)]', delay: '0.1s' },
-    { icon: <LinkedinIcon className="w-5 h-5" />, borderHover: 'hover:border-emerald-400', textHover: 'group-hover:text-emerald-400', shadowHover: 'hover:shadow-[0_0_20px_rgba(16,185,129,0.4)]', delay: '0.3s' },
-    { icon: <Mail className="w-5 h-5" />, borderHover: 'hover:border-purple-400', textHover: 'group-hover:text-purple-400', shadowHover: 'hover:shadow-[0_0_20px_rgba(168,85,247,0.4)]', delay: '0.5s' }
+    {
+      icon: <GithubIcon className="w-5 h-5" />,
+      href: "https://github.com/alsanroj",
+      borderHover: "hover:border-cyan-400",
+      textHover: "group-hover:text-cyan-400",
+      shadowHover: "hover:shadow-[0_0_20px_rgba(34,211,238,0.4)]",
+      delay: "0.1s",
+    },
+    {
+      icon: <LinkedinIcon className="w-5 h-5" />,
+      href: "https://www.linkedin.com/in/alsan-roj/",
+      borderHover: "hover:border-emerald-400",
+      textHover: "group-hover:text-emerald-400",
+      shadowHover: "hover:shadow-[0_0_20px_rgba(16,185,129,0.4)]",
+      delay: "0.3s",
+    },
+    {
+      icon: <Mail className="w-5 h-5" />,
+      href: "mailto:augstinaugustin5@gmail.com",
+      borderHover: "hover:border-purple-400",
+      textHover: "group-hover:text-purple-400",
+      shadowHover: "hover:shadow-[0_0_20px_rgba(168,85,247,0.4)]",
+      delay: "0.5s",
+    },
   ];
 
   return (
@@ -87,9 +108,9 @@ const Footer = () => {
           <h4 className="text-xl font-bold text-white mb-2 tracking-wide uppercase text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-400">Connect</h4>
           
           <div className="flex flex-col space-y-4">
-            <a href="mailto:contact@alsan.dev" className="flex items-center gap-3 text-gray-400 hover:text-cyan-400 transition-colors group font-medium">
+            <a href="mailto:augstinaugustin5@gmail.com" className="flex items-center gap-3 text-gray-400 hover:text-cyan-400 transition-colors group font-medium">
               <Mail className="w-5 h-5 text-gray-500 group-hover:text-cyan-400 transition-colors" />
-              contact@alsan.dev
+              contact @ Alsan Roj
             </a>
             <div className="flex items-center gap-3 text-gray-400 cursor-default group hover:text-blue-400 transition-colors font-medium">
               <MapPin className="w-5 h-5 text-gray-500 group-hover:text-blue-400 transition-colors" />
@@ -101,7 +122,7 @@ const Footer = () => {
             {socials.map((social, i) => (
               <a 
                 key={i} 
-                href="#" 
+                href={`${social.toLowerCase()}`}
                 className={`p-3 md:p-4 rounded-full bg-gray-900/40 backdrop-blur-xl border border-gray-800 transition-all duration-500 hover:scale-[1.15] hover:-translate-y-2 ${social.borderHover} ${social.shadowHover} group animate-float-reverse`}
                 style={{ animationDelay: social.delay }}
               >
